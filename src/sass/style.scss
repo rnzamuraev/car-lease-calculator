@@ -1,0 +1,12 @@
+// Подключаем шрифты
+// &display=swap
+@import "./fonts/fonts";
+@import "./base/var";
+@import "./base/sprite";
+
+body {
+  font-family: $basicFontFamily, sans-serif;
+  font-weight: normal;
+  // font-style: normal;
+  // color: #000000;
+}

@@ -1,0 +1,35 @@
+@font-face {
+  font-family: $basicFontFamily;
+  src: url(basicFontFamily + "-Regular.eot");
+  src: local(basicFontFamily + "Nekst"),
+    local($basicFontFamily + "-Regular"),
+    url(basicFontFamily + "-Regular.eot?#iefix")
+      format("embedded-opentype"),
+    url(basicFontFamily + "-Regular.woff2") format("woff2"),
+    url(basicFontFamily + "-Regular.woff") format("woff"),
+    url(basicFontFamily + "-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: $optionalFontFamily;
+  src: url($optionalFontFamily + "-Regular.eot");
+  src: local($optionalFontFamily + "Gilroy"),
+    local($optionalFontFamily + "-Regular"),
+    url($optionalFontFamily + "-Regular.eot?#iefix")
+      format("embedded-opentype"),
+    url($optionalFontFamily + "-Regular.woff2")
+      format("woff2"),
+    url($optionalFontFamily + "-Regular.woff")
+      format("woff"),
+    url($optionalFontFamily + "-Regular.ttf")
+      format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+%gilroy {
+  font-family: $optionalFontFamily, sans-serif;
+}
+@extend %gilroy;
