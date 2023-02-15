@@ -1,12 +1,48 @@
-// Подключаем шрифты
-// &display=swap
-@import "./fonts/fonts";
 @import "./base/var";
+@import "./base/reset";
+@import "~Normalize.css";
 @import "./base/sprite";
+@import "./base/mixins";
+@import "./base/fonts";
 
 body {
   font-family: $basicFontFamily, sans-serif;
   font-weight: normal;
-  // font-style: normal;
-  // color: #000000;
+  font-size: 10px;
+  color: $mainColorGrey;
 }
+.container {
+  margin: 0 auto;
+  width: 1345px;
+}
+@media (max-width: 1439px) {
+  .container {
+    width: 1024px;
+  }
+}
+@media (max-width: 1120px) {
+  .container {
+    width: 696px;
+  }
+}
+@media (max-width: 768px) {
+  .container {
+    margin: 0 auto;
+    padding: 0 20px;
+    width: 100%;
+  }
+}
+// @media (min-width: 320px) {
+//   .container {
+//     margin: 0 auto;
+//     padding: 0 2rem
+//     width: 280px;
+//   }
+// }
+// @media (max-width: 768px) {
+//   .container {
+//     margin: 0 auto;
+//     padding: 0 1rem
+//     width: 30rem;
+//   }
+// }

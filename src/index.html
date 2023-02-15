@@ -6,16 +6,41 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
+  <!-- <link rel="stylesheet" href="css/style.css"> -->
 </head>
 
 <body>
 
-
-  <H1>Hello World!</H1>
-
-  <svg class="icon">
-    <use xlink:href="./sprite/sprite.svg#circle"></use>
-  </svg>
+  <section class="calc">
+    <div class="container">
+      <h2 class="calc__title title">
+        Рассчитайте стоимость автомобиля в лизинг
+      </h2>
+      <form action="#" method="post" class="calc__form form">
+        <div class="form__item">
+          <label for="form-credit" class="form__label">Желаемая сумма кредита</label>
+          <input id="form-credit" type="text" type="text" name="credit" class="form__input">
+        </div>
+        <div class="form__item">
+          <label for="form-contribution" class="form__label">Первоначальный взнос</label>
+          <input id="form-contribution" type="text" type="text" name="contribution" class="form__input">
+        </div>
+        <div class="form__item">
+          <label for="form-term" class="form__label">Срок лизинга</label>
+          <input id="form-term" type="text" type="text" name="term" class="form__input">
+        </div>
+        <div class="form__item">
+          <label for="form-sum" class="form__label">Сумма договора лизинга</label>
+          <span class="form__label">4 467 313 ₽</span>
+        </div>
+        <div class="form__item">
+          <label for="form-payment" class="form__label">Ежемесячный платеж от</label>
+          <span id="form-payment">16 000 ₽</span>
+        </div>
+        <button class="form__btn btn">Оставить заявку</button>
+      </form>
+    </div>
+  </section>
 
 </body>
 

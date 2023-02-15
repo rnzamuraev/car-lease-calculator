@@ -1,0 +1,40 @@
+@font-face {
+  font-family: $basicFontFamily;
+  src: url("../fonts/" + $basicFontFamily + "-Regular.eot");
+  src: local($basicFontFamily + "Regular"),
+    local("../fonts/" + $basicFontFamily + "-Regular"),
+    // local($basicFontFamily + "-Regular"),
+    url("../fonts/" + $basicFontFamily + "-Regular.eot?#iefix")
+      format("embedded-opentype"),
+    url("../fonts/" + $basicFontFamily + "-Regular.woff2")
+      format("woff2"),
+    url("../fonts/" + $basicFontFamily + "-Regular.woff")
+      format("woff"),
+    url("../fonts/" + $basicFontFamily + "-Regular.ttf")
+      format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: $optionalFontFamily;
+  src: url("../fonts/" + $optionalFontFamily + "-Regular.eot");
+  src: local($optionalFontFamily + "Regular"),
+    local("../fonts/" + $optionalFontFamily + "-Regular"),
+    // local($optionalFontFamily + "-Regular"),
+    url("../fonts/" + $optionalFontFamily + "-Regular.eot?#iefix")
+      format("embedded-opentype"),
+    url("../fonts/" + $optionalFontFamily + "-Regular.woff2")
+      format("woff2"),
+    url("../fonts/" + $optionalFontFamily + "-Regular.woff")
+      format("woff"),
+    url("../fonts/" + $optionalFontFamily + "-Regular.ttf")
+      format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+%gilroy {
+  font-family: $optionalFontFamily, sans-serif;
+}
+// @extend %gilroy;

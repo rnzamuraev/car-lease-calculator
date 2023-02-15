@@ -10,23 +10,6 @@ const hash = (ext) => {
   return isDev ? `bundle.${ext}` : `bundle.[hash].${ext}`;
 };
 
-const jsLoaders = () => {
-  const loader = [
-    {
-      loader: "babel-loader",
-      options: {
-        presets: ["@babel/preset-env"],
-      },
-    },
-  ];
-
-  if (isDev) {
-    loader.push("eslint-loader");
-  }
-
-  return loader;
-};
-
 console.log("IS DEV", isDev);
 console.log("IS PROD", isProd);
 
@@ -73,10 +56,6 @@ module.exports = {
     //     },
     //   ],
     // }),
-    // minify: {
-    //   removeComments: isProd,
-    //   collapseWhitespace: isProd,
-    // },
   ],
   module: {
     rules: [
@@ -95,10 +74,16 @@ module.exports = {
       {
         test: /\.m?js$/,
         exclude: /(node_modules|bower_components)/,
-        // use: jsLoaders(),
         loader: "babel-loader",
         options: {
           presets: ["@babel/preset-env"],
+        },
+      },
+      {
+        test: /\.(woff|woff2|eot|ttf|otf)$/i,
+        type: "asset/resource",
+        generator: {
+          filename: "fonts/[name][ext]",
         },
       },
       {
