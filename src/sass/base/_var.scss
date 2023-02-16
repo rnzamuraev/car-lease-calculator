@@ -11,5 +11,80 @@ $mainColorGrey: #575757;
 $mainColorOrange: #ff9514;
 $mainColorWhite: #ffffff;
 $BackgroundInput: #f3f3f4;
-$BackgroundInputAfter: #e0e0e0;
+$BackgroundInputAfter: #ebebec;
 $BackgroundInputBefore: #e0e0e0;
+$BackgroundInputrange: #e1e1e1;
+$mainBtnColor: #ffffff;
+$mainBtnBackground: #ff9514;
+$mainBtnBackgroundHover: #111111;
+$mainColorMobile: #333e48;
+
+//
+// @mixin calculate(
+//   $property,
+//   $startSize,
+//   $minSize,
+//   $maxWidthContainer,
+//   $maxWidth,
+//   // $minWidthContainer
+// ) {
+//   $addSize: $startSize - $minSize;
+//   // $minSizePx: $minSize + px;
+//   #{$property}: $startSize + px;
+//   @if 100vw < $maxWidth {
+//     @media (max-width: #{$maxWidthContainer + px}) {
+//       #{$property}: calc(
+//         #{$minSize + px} + #{$addSize} *
+//           ((100vw - 320px) / #{$maxWidth - 320})
+//       );
+//     }
+//     // @if 100vw < $type {
+//     //   #{$property}: calc(
+//     //     #{$minSize +
+//     //       px} +
+//     //       #{$addSize} *
+//     //       ((100vw - 320px) / #{$type - 320})
+//     //   );
+//     // }
+//   } @else {
+//     #{$property}: $startSize + px;
+//   }
+// $property: calc(
+//   ($minSize + px) + ($startSize - $minSize) *
+//     (
+//       (100vw - ($minWidthContainer + px)) /
+//         ($maxWidthContainer - $minWidthContainer)
+//     )
+// );
+// 34px + (54 - 34) * ((100vw - 320px) / (768 - 320)));
+// @return $result;
+// }
+@mixin calcSize(
+  $property,
+  $startSize,
+  $minSize,
+  $maxWidthContainer,
+  $minWidth
+) {
+  #{$property}: calc(
+    #{$minSize + px} + #{$startSize - $minSize} *
+      (
+        (100vw - #{$minWidth + px}) / #{$maxWidthContainer -
+          $minWidth}
+      )
+  );
+  // 34px + (54 - 34) * ((100vw - 320px) / (767 - 320)));
+}
+// @function calculate(
+//   $startSize,
+//   $minSize,
+//   $maxWidth,
+//   $minWidth
+// ) {
+//   $result: calc(
+//     ($minSize + px) + ($startSize - $minSize) *
+//       ((100vw - $minWidth + px) / ($maxWidth - $minWidth))
+//   );
+//   // 34px + (54 - 34) * ((100vw - 320px) / (767 - 320)));
+//   @return $result;
+// }

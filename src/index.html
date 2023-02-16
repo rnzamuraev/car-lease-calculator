@@ -6,7 +6,6 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
-  <!-- <link rel="stylesheet" href="css/style.css"> -->
 </head>
 
 <body>
@@ -17,26 +16,47 @@
         Рассчитайте стоимость автомобиля в лизинг
       </h2>
       <form action="#" method="post" class="calc__form form">
-        <div class="form__item">
+        <!--  -->
+        <div class="form__item form__item-input">
           <label for="form-credit" class="form__label">Желаемая сумма кредита</label>
-          <input id="form-credit" type="text" type="text" name="credit" class="form__input">
+          <div class="form__wrap">
+            <input id="form-credit" type="number" name="credit" class="form__input" value="1500000">
+            <span class="form__badge form__badge-credit">₽</span>
+          </div>
+          <input type="range" name="credit-range" min="1500000" max="10000000" value="1500000"
+            class="form__input form__input-range" step="100">
         </div>
-        <div class="form__item">
+        <!--  -->
+        <div class="form__item form__item-input">
           <label for="form-contribution" class="form__label">Первоначальный взнос</label>
-          <input id="form-contribution" type="text" type="text" name="contribution" class="form__input">
+          <div class="form__wrap">
+            <input id="form-contribution" type="number" name="contribution" class="form__input" value="">
+            <span class="form__badge form__badge-contribution">18%</span>
+          </div>
+          <input type="range" name="contribution-range" min="10%" max="60%" value=""
+            class="form__input form__input-range" step="1">
         </div>
-        <div class="form__item">
+        <!--  -->
+        <div class="form__item form__item-input">
           <label for="form-term" class="form__label">Срок лизинга</label>
-          <input id="form-term" type="text" type="text" name="term" class="form__input">
+          <div class="form__wrap">
+            <input id="form-term" type="number" name="term" class="form__input" value="">
+            <span class="form__badge form__badge-term">мес.</span>
+          </div>
+          <input type="range" name="term-range" min="6" max="120" value="" class="form__input form__input-range"
+            step="1">
         </div>
-        <div class="form__item">
+        <!--  -->
+        <div class="form__item form__item-block">
           <label for="form-sum" class="form__label">Сумма договора лизинга</label>
-          <span class="form__label">4 467 313 ₽</span>
+          <span id="form-sum">4 467 313 ₽</span>
         </div>
-        <div class="form__item">
+        <!--  -->
+        <div class="form__item form__item-block">
           <label for="form-payment" class="form__label">Ежемесячный платеж от</label>
           <span id="form-payment">16 000 ₽</span>
         </div>
+        <!--  -->
         <button class="form__btn btn">Оставить заявку</button>
       </form>
     </div>

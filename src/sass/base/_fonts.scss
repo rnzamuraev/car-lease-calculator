@@ -1,18 +1,33 @@
+// @font-face {
+//   font-family: $basicFontFamily;
+//   src: url("../fonts/" + $basicFontFamily + "-Regular.eot");
+//   src: local($basicFontFamily + "Regular"),
+//     local("../fonts/" + $basicFontFamily + "-Regular"),
+//     url("../fonts/" + $basicFontFamily + "-Regular.eot?#iefix")
+//       format("embedded-opentype"),
+//     url("../fonts/" + $basicFontFamily + "-Regular.woff2")
+//       format("woff2"),
+//     url("../fonts/" + $basicFontFamily + "-Regular.woff")
+//       format("woff"),
+//     url("../fonts/" + $basicFontFamily + "-Regular.ttf")
+//       format("truetype");
+//   font-weight: normal;
+//   font-style: normal;
+// }
 @font-face {
   font-family: $basicFontFamily;
-  src: url("../fonts/" + $basicFontFamily + "-Regular.eot");
-  src: local($basicFontFamily + "Regular"),
-    local("../fonts/" + $basicFontFamily + "-Regular"),
-    // local($basicFontFamily + "-Regular"),
-    url("../fonts/" + $basicFontFamily + "-Regular.eot?#iefix")
+  src: url("../fonts/" + $basicFontFamily + "-Black.eot");
+  src: local($basicFontFamily + "Black"),
+    local("../fonts/" + $basicFontFamily + "-Black"),
+    url("../fonts/" + $basicFontFamily + "-Black.eot?#iefix")
       format("embedded-opentype"),
-    url("../fonts/" + $basicFontFamily + "-Regular.woff2")
+    url("../fonts/" + $basicFontFamily + "-Black.woff2")
       format("woff2"),
-    url("../fonts/" + $basicFontFamily + "-Regular.woff")
+    url("../fonts/" + $basicFontFamily + "-Black.woff")
       format("woff"),
-    url("../fonts/" + $basicFontFamily + "-Regular.ttf")
+    url("../fonts/" + $basicFontFamily + "-Black.ttf")
       format("truetype");
-  font-weight: normal;
+  font-weight: 900;
   font-style: normal;
 }
 
@@ -21,7 +36,6 @@
   src: url("../fonts/" + $optionalFontFamily + "-Regular.eot");
   src: local($optionalFontFamily + "Regular"),
     local("../fonts/" + $optionalFontFamily + "-Regular"),
-    // local($optionalFontFamily + "-Regular"),
     url("../fonts/" + $optionalFontFamily + "-Regular.eot?#iefix")
       format("embedded-opentype"),
     url("../fonts/" + $optionalFontFamily + "-Regular.woff2")
