@@ -1,5 +1,5 @@
 {
-  "name": "test4",
+  "name": "car-lease-calculator",
   "version": "1.0.0",
   "description": "",
   "main": "webpack.config.js",
@@ -10,16 +10,16 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/rnzamuraev/test-layout-4.git"
+    "url": "git+https://github.com/rnzamuraev/car-lease-calculator.git"
   },
   "author": "Ruslan Z. <rnzamuraev@gmail.com>",
   "license": "ISC",
   "private": "true",
   "browserslist": "> 0.25%, not dead",
   "bugs": {
-    "url": "https://github.com/rnzamuraev/test-layout-4/issues"
+    "url": "https://github.com/rnzamuraev/car-lease-calculator/issues"
   },
-  "homepage": "https://github.com/rnzamuraev/test-layout-4#readme",
+  "homepage": "https://github.com/rnzamuraev/car-lease-calculator#readme",
   "devDependencies": {
     "@babel/core": "^7.20.12",
     "@babel/preset-env": "^7.20.2",
