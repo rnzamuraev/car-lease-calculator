@@ -20,47 +20,80 @@
         <div class="form__item form__item-input">
           <label for="form-credit" class="form__label">Желаемая сумма кредита</label>
           <div class="form__wrap">
-            <input id="form-credit" type="number" name="credit" class="form__input" value="1500000">
+            <input id="form-credit" type="number" name="credit" class="form__input form__input-input" value="2000000">
             <span class="form__badge form__badge-credit">₽</span>
           </div>
-          <input type="range" name="credit-range" min="1500000" max="10000000" value="1500000"
-            class="form__input form__input-range" step="100">
+          <!-- name="credit-range" -->
+          <input type="range" min="1500000" max="10000000" value="2000000"
+            class="form__input form__input-range range-progress" step="1000">
         </div>
         <!--  -->
         <div class="form__item form__item-input">
           <label for="form-contribution" class="form__label">Первоначальный взнос</label>
           <div class="form__wrap">
-            <input id="form-contribution" type="number" name="contribution" class="form__input" value="">
-            <span class="form__badge form__badge-contribution">18%</span>
+            <input id="form-contribution" type="number" name="contribution" class="form__input form__input-input"
+              value="150000">
+            <span class="form__badge form__badge-contribution">13%</span>
           </div>
-          <input type="range" name="contribution-range" min="10%" max="60%" value=""
-            class="form__input form__input-range" step="1">
+          <!-- name="contribution-range"  -->
+          <input type="range" min="10" max="60" class="form__input form__input-range range-progress" step="1"
+            value="13">
         </div>
         <!--  -->
         <div class="form__item form__item-input">
           <label for="form-term" class="form__label">Срок лизинга</label>
           <div class="form__wrap">
-            <input id="form-term" type="number" name="term" class="form__input" value="">
+            <input id="form-term" type="number" name="term" class="form__input form__input-input" value="6">
             <span class="form__badge form__badge-term">мес.</span>
           </div>
-          <input type="range" name="term-range" min="6" max="120" value="" class="form__input form__input-range"
-            step="1">
+          <!-- name="term-range" -->
+          <input type="range" min="6" max="120" class="form__input form__input-range range-progress" step="1" value="6">
+          <!-- class="form__input form__input-range styled-slider slider-progress" step="1" value="6"> -->
         </div>
         <!--  -->
         <div class="form__item form__item-block">
           <label for="form-sum" class="form__label">Сумма договора лизинга</label>
-          <span id="form-sum">4 467 313 ₽</span>
+          <div class="form__calculation">
+            <input id="form-sum" type="text" name="sum" class="form__input form__input-value" disabled value="0">
+            <!-- <span>₽</span> -->
+          </div>
         </div>
         <!--  -->
         <div class="form__item form__item-block">
           <label for="form-payment" class="form__label">Ежемесячный платеж от</label>
-          <span id="form-payment">16 000 ₽</span>
+          <div class="form__calculation">
+            <input id="form-payment" type="text" name="payment" class="form__input form__input-value" disabled
+              value="0">
+            <!-- <span>₽</span> -->
+          </div>
         </div>
         <!--  -->
         <button class="form__btn btn">Оставить заявку</button>
       </form>
     </div>
+
   </section>
+
+  <!-- <style>
+    #elem-container {
+      position: absolute;
+      left: 100px;
+      top: 200px;
+      height: 100px;
+    }
+  </style>
+
+  <div id="elem-container">dummy</div>
+  <div id="output"></div>
+
+  <script>
+    function getTheStyle() {
+      var elem = document.getElementById("elem-container");
+      var theCSSprop = window.getComputedStyle(elem, null).getPropertyValue("height");
+      document.getElementById("output").innerHTML = theCSSprop;
+    }
+    getTheStyle();
+  </script> -->
 
 </body>
 

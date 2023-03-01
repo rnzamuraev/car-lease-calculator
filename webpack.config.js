@@ -30,7 +30,7 @@ module.exports = {
       directory: path.resolve(__dirname, "dist"),
     },
     compress: true,
-    port: 5000,
+    port: 9000,
     open: true,
     hot: isDev,
   },

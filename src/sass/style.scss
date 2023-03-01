@@ -7,20 +7,14 @@
 
 * {
   box-sizing: border-box;
-  // font-weight: 900;
-  // color: $mainColorGrey;
-  // font-family: $basicFontFamily, sans-serif;
+  padding: 0;
+  margin: 0;
+  color: $mainColorGrey;
 }
-
-// html {
-//   font-weight: 900;
-//   color: $mainColorGrey;
-// }
 
 body {
   font-family: $basicFontFamily, sans-serif;
   font-weight: 900;
-  color: $mainColorGrey;
 }
 
 /* Chrome, Safari, Edge, Opera */
@@ -36,7 +30,6 @@ input[type="number"] {
 }
 
 .title {
-  // font-weight: 900;
   font-size: 54px;
   line-height: 90%;
 }
@@ -54,44 +47,17 @@ input[type="number"] {
     width: 696px;
   }
 }
-// @media (max-width: 768px) and (min-width: 320px) {
 @media (max-width: 767px) {
   .container {
     width: 100%;
     @include calcSize("padding", 36, 20, 767, 320);
-    //   @include calculate("padding", 36, 20, 768, 768);
   }
   .title {
-    // $property, $startSize, $minSize, $maxWidthContainer,
-    // @include calculate("font-size", 54, 34, 768);
-    // font-size: calc(
-    //   34px + (54 - 34) * ((100vw - 320px) / (767 - 320))
-    // );
-    // padding-right: 50px;
     font-size: 34px;
   }
 }
-// @media (min-width: 320px) {
-//   .container {
-//     padding: 0 20px;
-//     width: 100%;
-//   }
-// }
 
 @import "./components/calc";
 @import "./components/form";
 @import "./components/btn";
-// @media (min-width: 320px) {
-//   .container {
-//     margin: 0 auto;
-//     padding: 0 2rem
-//     width: 280px;
-//   }
-// }
-// @media (max-width: 768px) {
-//   .container {
-//     margin: 0 auto;
-//     padding: 0 1rem
-//     width: 30rem;
-//   }
-// }
+@import "./components/inputRange";

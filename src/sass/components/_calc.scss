@@ -9,7 +9,7 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-    align-items: center;
+    align-items: end;
   }
 }
 @media (max-width: 1119px) {
@@ -36,19 +36,20 @@
   .calc {
     padding: 24px 0 44px;
     .calc__title {
-      max-width: 596px;
+      // width: 100%;
+      max-width: 580px;
       // @include calculate("max-width", 230, 230, 767, 455);
       // color: $mainColorBlack;
       margin-bottom: 32px;
     }
   }
 }
-// @media (max-width: 480px) {
-//   .calc {
-//     .calc__title {
-//       max-width: 230px;
-//       // color: $mainColorBlack;
-//       // margin-bottom: 32px;
-//     }
-//   }
-// }
+@media (max-width: 440px) {
+  .calc {
+    .calc__title {
+      width: 220px;
+      // color: $mainColorBlack;
+      // margin-bottom: 32px;
+    }
+  }
+}
