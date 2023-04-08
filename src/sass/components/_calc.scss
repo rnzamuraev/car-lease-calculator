@@ -1,5 +1,8 @@
 .calc {
-  padding: 213px 0;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  // padding: 213px 0;
   .calc__title {
     max-width: 696px;
     color: $mainColorBlack;
@@ -16,30 +19,15 @@
   .calc {
     padding: 64px 0 156px;
     .calc__title {
-      // max-width: 596px;
-      // @include calculate("max-width", 230, 230, 767, 455);
-      // color: $mainColorBlack;
       margin-bottom: 44px;
     }
-    // &__item {
-    //   // display: flex;
-    //   // flex-direction: column;
-    //   width: 320px;
-    // }
-    // &__btn {
-    //   width: 320px;
-    //   // height: 68px;
-    // }
   }
 }
 @media (max-width: 767px) {
   .calc {
     padding: 24px 0 44px;
     .calc__title {
-      // width: 100%;
       max-width: 580px;
-      // @include calculate("max-width", 230, 230, 767, 455);
-      // color: $mainColorBlack;
       margin-bottom: 32px;
     }
   }
@@ -48,8 +36,6 @@
   .calc {
     .calc__title {
       width: 220px;
-      // color: $mainColorBlack;
-      // margin-bottom: 32px;
     }
   }
 }

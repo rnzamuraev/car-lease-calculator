@@ -15,10 +15,7 @@ console.log("IS PROD", isProd);
 
 module.exports = {
   mode: "development",
-  entry: [
-    "@babel/polyfill",
-    path.resolve(__dirname, "src", "js/script.js"),
-  ],
+  entry: ["@babel/polyfill", path.resolve(__dirname, "src", "js/script.js")],
   output: {
     filename: hash("js"),
     path: path.resolve(__dirname, "dist"),
@@ -30,17 +27,13 @@ module.exports = {
       directory: path.resolve(__dirname, "dist"),
     },
     compress: true,
-    port: 9000,
+    port: 9200,
     open: true,
     hot: isDev,
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: path.resolve(
-        __dirname,
-        "src",
-        "index.html"
-      ),
+      template: path.resolve(__dirname, "src", "index.html"),
     }),
     new MiniCssExtractPlugin({
       filename: hash("css"),
@@ -65,11 +58,7 @@ module.exports = {
       },
       {
         test: /\.(sc|sa|c)ss$/i,
-        use: [
-          MiniCssExtractPlugin.loader,
-          "css-loader",
-          "sass-loader",
-        ],
+        use: [MiniCssExtractPlugin.loader, "css-loader", "sass-loader"],
       },
       {
         test: /\.m?js$/,

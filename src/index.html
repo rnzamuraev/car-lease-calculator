@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>car lease calculator</title>
 </head>
 
 <body>
@@ -20,7 +20,7 @@
         <div class="form__item form__item-input">
           <label for="form-credit" class="form__label">Желаемая сумма кредита</label>
           <div class="form__wrap">
-            <input id="form-credit" type="number" name="credit" class="form__input form__input-input" value="2000000">
+            <input id="form-credit" type="text" name="credit" class="form__input form__input-input" value="2000000">
             <span class="form__badge form__badge-credit">₽</span>
           </div>
           <!-- name="credit-range" -->
@@ -31,7 +31,7 @@
         <div class="form__item form__item-input">
           <label for="form-contribution" class="form__label">Первоначальный взнос</label>
           <div class="form__wrap">
-            <input id="form-contribution" type="number" name="contribution" class="form__input form__input-input"
+            <input id="form-contribution" type="text" name="contribution" class="form__input form__input-input"
               value="150000">
             <span class="form__badge form__badge-contribution">13%</span>
           </div>
@@ -43,19 +43,17 @@
         <div class="form__item form__item-input">
           <label for="form-term" class="form__label">Срок лизинга</label>
           <div class="form__wrap">
-            <input id="form-term" type="number" name="term" class="form__input form__input-input" value="6">
+            <input id="form-term" type="text" name="term" class="form__input form__input-input" value="6">
             <span class="form__badge form__badge-term">мес.</span>
           </div>
           <!-- name="term-range" -->
           <input type="range" min="6" max="120" class="form__input form__input-range range-progress" step="1" value="6">
-          <!-- class="form__input form__input-range styled-slider slider-progress" step="1" value="6"> -->
         </div>
         <!--  -->
         <div class="form__item form__item-block">
           <label for="form-sum" class="form__label">Сумма договора лизинга</label>
           <div class="form__calculation">
             <input id="form-sum" type="text" name="sum" class="form__input form__input-value" disabled value="0">
-            <!-- <span>₽</span> -->
           </div>
         </div>
         <!--  -->
@@ -64,7 +62,6 @@
           <div class="form__calculation">
             <input id="form-payment" type="text" name="payment" class="form__input form__input-value" disabled
               value="0">
-            <!-- <span>₽</span> -->
           </div>
         </div>
         <!--  -->
@@ -73,27 +70,6 @@
     </div>
 
   </section>
-
-  <!-- <style>
-    #elem-container {
-      position: absolute;
-      left: 100px;
-      top: 200px;
-      height: 100px;
-    }
-  </style>
-
-  <div id="elem-container">dummy</div>
-  <div id="output"></div>
-
-  <script>
-    function getTheStyle() {
-      var elem = document.getElementById("elem-container");
-      var theCSSprop = window.getComputedStyle(elem, null).getPropertyValue("height");
-      document.getElementById("output").innerHTML = theCSSprop;
-    }
-    getTheStyle();
-  </script> -->
 
 </body>
 

@@ -1,6 +1,7 @@
 import { inputRange } from "./inputRange";
-// import mask from "./mask.js";
+import { mask } from "./mask.js";
 import { submitForm } from "./submitForm";
+import { getNums } from "./getNum";
 
 export function form() {
   const form = document.querySelector(".calc__form");
@@ -14,47 +15,48 @@ export function form() {
   const formSum = inputsForm[6];
   const formPayment = inputsForm[7];
 
-  // mask(creditInput);
+  // Устанивливаем начальное значение первоначального взноса
+  contributionInput.value = (getNums(creditInput) / 100) * contributionRange.value;
+  // Запускаем маску ввода
+  mask(creditInput);
+  mask(contributionInput);
 
   // Получаем сумма договора лизинга
   function getSum() {
-    contributionInput.value =
-      (creditInput.value / 100) * contributionRange.value;
-    console.log(formPayment.value);
-    console.log(+formPayment.value.slice(0, -2));
-    const sum =
-      +contributionInput.value +
-      +termInput.value * +formPayment.value.slice(0, -2);
+    const sum = +getNums(contributionInput) + +getNums(termInput) * +getNums(formPayment);
 
     if (isNaN(sum)) {
       formSum.value = 0 + " ₽";
     } else if (sum < 0) {
       formPayment.value = 0 + " ₽";
     } else {
-      formSum.value = sum + " ₽";
+      formSum.value = sum;
+      mask(formSum);
+      formSum.value = formSum.value + " ₽";
     }
   }
 
   // Получаем ежемесячный платеж от
   function getPayment() {
     const payment = Math.round(
-      ((+creditInput.value - +contributionInput.value) *
-        (0.05 * Math.pow(1 + 0.05, +termInput.value))) /
-        (Math.pow(1 + 0.05, termInput.value) - 1)
+      ((+getNums(creditInput, "round") - +getNums(contributionInput, "round")) *
+        (0.05 * Math.pow(1 + 0.05, +getNums(termInput)))) /
+        (Math.pow(1 + 0.05, getNums(termInput, "round")) - 1)
     );
 
     if (payment === Infinity) {
-      console.log("Infinity");
       formPayment.value = 0 + " ₽";
     } else if (isNaN(payment)) {
-      console.log("isNaN(payment)");
       formPayment.value = 0 + " ₽";
     } else if (payment < 0) {
-      console.log("payment < 0");
       formPayment.value = 0 + " ₽";
     } else {
-      formPayment.value = payment + " ₽";
+      formPayment.value = payment;
+      mask(formPayment);
+
+      formPayment.value = formPayment.value + " ₽";
     }
+
     getSum();
   }
 
@@ -62,7 +64,6 @@ export function form() {
 
   // Отключаем событие submit по кнопке Enter
   function keydownEnter(e) {
-    console.log(e.key);
     if (e.target.classList.contains("form__input-input")) {
       if (e.key === "Enter") {
         e.preventDefault();
@@ -71,15 +72,12 @@ export function form() {
     }
   }
 
+  // Получаем значения инпутов
   function getInputValue(e) {
-    console.log(e.target.value);
-
     handlerFormInputRange(e);
-
     handlerFormInputValue(e);
-
-    // mask(".form__input-value");
     getPayment();
+    mask(contributionInput);
   }
 
   // Обработчик input-range значения
@@ -90,18 +88,16 @@ export function form() {
       const span = prevElement.querySelector("span");
 
       if (input.name === "contribution") {
-        span.textContent = e.target.value + "%";
-        contributionInput.value =
-          (creditInput.value / 100) * e.target.value;
+        span.textContent = getNums(e.target) + "%";
+        contributionInput.value = (getNums(creditInput) / 100) * getNums(e.target);
       } else {
-        // mask(input);
         input.value = e.target.value;
       }
 
       if (input.name === "credit") {
-        contributionInput.value =
-          (input.value / 100) * inputsForm[3].value;
+        contributionInput.value = (getNums(input) / 100) * inputsForm[3].value;
       }
+      mask(input);
     }
   }
 
@@ -111,116 +107,87 @@ export function form() {
       const range = e.target.parentNode.nextElementSibling;
       const min = range.min;
       const max = range.max;
+      let bagePercent;
 
       if (e.type === "input") {
         if (e.target.name !== "contribution") {
-          // let a = e.target.value.replace(/\ /g, "");
-          // console.log("replace", a);
-          // range.value = +e.target.value.replace(/\ /g, "");
-          range.value = e.target.value;
-          // если поле ввода равно "", Range = своему минимальному значению
+          range.value = +getNums(e.target);
+
           if (e.target.value == "") {
             range.value = +min;
           }
 
-          // console.log(max.length + 2);
-          // if (e.target.value.length > max.length + 2) {
-          //   e.target.value = e.target.value.slice(
-          //     0,
-          //     max.length + 2
-          //   );
-          // }
-          console.log(max.length);
-          if (e.target.value.length > max.length) {
-            e.target.value = e.target.value.slice(
-              0,
-              max.length
-            );
+          if (getNums(e.target).length > max.length) {
+            const targetVal = getNums(e.target).slice(0, max.length);
+            e.target.value = targetVal;
           }
 
           if (e.target.name === "credit") {
-            const contribution =
-              (e.target.value / 100) *
-              +contributionInput.parentNode
-                .nextElementSibling.value;
+            const contributionRange = contributionInput.parentNode.nextElementSibling.value;
+            const contribution = (getNums(e.target, "round") / 100) * +contributionRange;
 
-            contributionInput.value =
-              Math.round(contribution);
-
-            // mask(e, e.target);
+            contributionInput.value = Math.round(contribution);
           }
         } else {
-          // range.value = slice(
-          //   Math.round(
-          //     e.target.value / (creditInput.value / 100)
-          //   )
-          // );
-          // let contribution = e.target.value.slice(
-          //   0,
-          //   creditInput.value.length - 1
-          // );
-          // e.target.value = contribution;
-          let maxLength = (creditInput.value / 100) * max;
-          e.target.value = e.target.value.slice(
-            0,
-            String(maxLength).length
+          const contributionPercent = Math.round(
+            getNums(e.target, "round") / (getNums(creditInput, "round") / 100)
           );
+          const maxContributionValue = (getNums(creditInput) / 100) * max;
+          bagePercent = e.target.nextElementSibling;
 
-          range.value = Math.round(
-            e.target.value / (creditInput.value / 100)
-          );
+          e.target.value = getNums(e.target);
 
-          e.target.nextElementSibling.textContent =
-            range.value + "%";
+          if (contributionPercent <= 0) {
+            range.value = 0;
+            bagePercent.textContent = 0 + "%";
+            return;
+          }
+
+          if (+getNums(e.target) > maxContributionValue) {
+            const targetVal = maxContributionValue;
+            e.target.value = targetVal;
+            range.value = max;
+            bagePercent.textContent = max + "%";
+            inputRange();
+            return;
+          }
+
+          range.value = contributionPercent;
+          bagePercent.textContent = contributionPercent + "%";
         }
       }
 
       if (e.type === "blur") {
-        console.log(min);
         if (e.target.name !== "contribution") {
           e.target.value = range.value;
-          console.log(
-            contributionInput.parentNode.nextElementSibling
-              .value
-          );
           if (e.target.name === "credit") {
             contributionInput.value =
-              (e.target.value / 100) *
-              contributionInput.parentNode
-                .nextElementSibling.value;
+              (getNums(e.target) / 100) * contributionInput.parentNode.nextElementSibling.value;
           }
         } else {
-          e.target.value =
-            (creditInput.value / 100) * range.value;
-          console.log("contribution");
+          e.target.value = (getNums(creditInput) / 100) * range.value;
+          bagePercent = e.target.nextElementSibling;
+          bagePercent.textContent =
+            Math.round(getNums(e.target, "round") / (getNums(creditInput, "round") / 100)) + "%";
         }
       }
 
       inputRange();
+      mask(e.target);
     }
   }
 
-  // событие по кнопке клавиатуры
+  // Ослеживаем событие по кнопке Enter
   document.addEventListener("keydown", (e) => {
     keydownEnter(e);
   });
 
   // Ослеживаем события в input
   inputsForm.forEach((input) => {
-    // input.addEventListener("focus", (e) => {
-    //   console.log("focusInput", e.target.value);
-    //   getInputValue(e);
-    // });
-    // input.addEventListener("beforeinput", (e) => {
-    //   console.log("beforeinput", e.target.value);
-    //   getInputValue(e);
-    // });
     input.addEventListener("input", (e) => {
-      console.log("nextValue", e.target.value);
       getInputValue(e);
     });
     input.addEventListener("blur", (e) => {
-      console.log("blurValue", e.target.value);
       getInputValue(e);
     });
   });

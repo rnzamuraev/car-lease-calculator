@@ -1,38 +1,33 @@
-export default function mask(e, selector) {
+export function mask(selector) {
   function getMatrix(elem) {
     let matrix = "";
-const num = elem.replace("_", "");
-    console.log(num);
-    console.log(num.value);
-    console.log(num.value.length);
+    const arr = elem.value.split(".");
 
-    for (let i = 0; i < elem.value.length; i++) {
-      if (elem.value.length < 4) {
+    const num = arr[0].replace(/\D/g, "");
+    const b = arr[1] ? arr[1] : 0;
+
+    for (let i = 0; i < num.length; i++) {
+      if (num.length === 1) {
+        matrix = "_";
+      } else if (num.length === 2) {
+        matrix = "__";
+      } else if (num.length === 3) {
         matrix = "___";
-        console.log("i++", "elem.value.length < 4");
-      } else if (elem.value.length === 4) {
+      } else if (num.length === 4) {
         matrix = "_ ___";
-        console.log("i++", "elem.value.length === 4");
-      } else if (elem.value.length === 5) {
+      } else if (num.length === 5) {
         matrix = "__ ___";
-        console.log("i++", "elem.value.length === 6");
-      } else if (elem.value.length === 6) {
+      } else if (num.length === 6) {
         matrix = "___ ___";
-        console.log("i++", "elem.value.length === 7");
-      } else if (elem.value.length === 7) {
+      } else if (num.length === 7) {
         matrix = "_ ___ ___";
-        console.log("i++", "elem.value.length === 8");
-      } else if (elem.value.length >= 8) {
+      } else if (num.length === 8) {
         matrix = "__ ___ ___";
-        console.log("i++", "elem.value.length === 10");
+      } else if (num.length >= 9) {
+        matrix = "___ ___ ___";
       }
     }
 
-    // else if (elem.value.length === 11) {
-    //   matrix = "___ ___ ___";
-    // }
-
-    console.log(matrix);
     return matrix;
   }
 
@@ -40,18 +35,17 @@ const num = elem.replace("_", "");
     let matrix = getMatrix(elem),
       i = 0,
       val = elem.value.replace(/\D/g, "");
-    console.log(matrix);
-    console.log(i);
-    console.log(val.length);
 
     elem.value = matrix.replace(/./g, function (a) {
-      return /[_\d]/.test(a) && i < val.length
-        ? val.charAt(i++)
-        : i >= val.length
-        ? ""
-        : a;
+      return /[_\d]/.test(a) && i < val.length ? val.charAt(i++) : i >= val.length ? "" : a;
     });
   }
 
-  createMask(selector);
+  if (selector.nodeName) {
+    createMask(selector);
+  } else if (selector.length) {
+    selector.forEach((elem) => {
+      createMask(elem);
+    });
+  }
 }
