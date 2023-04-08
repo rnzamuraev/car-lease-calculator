@@ -1,3 +1,7 @@
-# car lease calculator portfolio project
+# car lease calculator
+
+1. Калькулятор сверстан по макету заказчика с учетом ТЗ, для дальнейшего встраивания на сайт.
+2. Реализована маска ввода числовых значений.
+3. В проекте используется только нативный javascript без использования сторонних библиотек.
 
 [demo](https://rnzamuraev.github.io/car-lease-calculator)

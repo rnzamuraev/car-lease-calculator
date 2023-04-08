@@ -81,7 +81,7 @@
   }
   &__calculation {
     position: relative;
-    font-size: 54px;
+    font-size: 49px;
     line-height: 90%;
     span {
       color: $mainColorLightBlack;
@@ -94,15 +94,9 @@
     width: 426px;
     height: 68px;
   }
-  .input-sum,
-  .input-payment {
-    position: absolute;
-    top: 50px;
-    left: 0px;
-    font-weight: 900;
-    font-size: 54px;
-    line-height: 90%;
-    padding-right: 15px;
+  input[name="sum"],
+  input[name="payment"] {
+    border-radius: 0;
   }
 }
 @media (max-width: 1439px) {
@@ -133,7 +127,7 @@
         // padding-bottom: 7px;
       }
       &-block {
-        min-width: 332px;
+        min-width: 335px;
         padding-top: 5px;
         margin-bottom: 44px;
       }
@@ -153,26 +147,12 @@
     font-size: 22px;
     line-height: 20px;
     &__item {
-      // position: relative;
-      // display: flex;
-      // flex-direction: column;
       @include calcSize("min-width", 696, 280, 767, 320);
-      // width: 100%;
-      // height: 119px;
       &-input {
-        // @include calcSize("width", 696, 280, 767, 320);
         margin-bottom: 16px;
         color: $mainColorMobile; //mobile-color
         label {
-          // font-size: 14px;
-          // line-height: 136%;
-          @include calcSize(
-            "max-width",
-            696,
-            280,
-            767,
-            320
-          );
+          @include calcSize("max-width", 696, 280, 767, 320);
           margin-bottom: 8px;
         }
       }
@@ -180,73 +160,34 @@
         min-width: 280px;
         margin-bottom: 29px;
         label {
-          // font-size: 14px;
-          // line-height: 136%;
           margin-bottom: 2px;
         }
-        // span {
-        //   font-size: 22px;
-        //   line-height: 20px;
-        //   &::after {
-        //     content: "₽";
-        //     margin-left: 5px;
-        //     // position: absolute;
-        //     bottom: 2px;
-        //   }
-        // }
       }
     }
     &__label {
       font-size: 14px;
       line-height: 136%;
-      // @extend %gilroy;
     }
     &__wrap {
       @include calcSize("max-width", 696, 280, 767, 320);
-      // position: relative;
     }
     &__input {
-      // width: 100%;
       height: 60px;
       font-size: 22px;
       line-height: 23px;
       &-input {
         padding: 20px;
-        // color: $mainColorMobile;
       }
-      // position: relative;
-      // background: $BackgroundInput;
-      // border: 2px solid $BackgroundInput;
-      // border-radius: 16px;
-      // outline: none;
-
-      // font-weight: 900;
-      // &:focus {
-      //   background: $mainColorWhite;
-      // }
       &-range {
-        // display: block;
-        // position: absolute;
         max-width: 240px;
         @include calcSize("min-width", 648, 240, 767, 320);
-        // padding: 0;
-        // height: 1px;
-        // bottom: 2px;
         left: 20px;
       }
       &-value {
         height: 20px;
-        //         font-size: 22px;
-        // line-height: 20px;
       }
     }
     &__badge {
-      // position: absolute;
-      // top: 50%;
-      // transform: translateY(-50%);
-      // border-radius: 16px;
-      // font-weight: 900;
-      // text-align: center;
       &-term,
       &-credit {
         right: 20px;
@@ -275,12 +216,6 @@
       margin-top: 3px;
       width: 280px;
       height: 60px;
-    }
-    .input-sum,
-    .input-payment {
-      font-size: 22px;
-      line-height: 23px;
-      padding-right: 5px;
     }
   }
 }
