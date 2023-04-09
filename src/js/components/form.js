@@ -9,9 +9,9 @@ export function form() {
   const creditInput = inputsForm[0];
   const contributionInput = inputsForm[2];
   const termInput = inputsForm[4];
-  const creditRange = inputsForm[1];
+  // const creditRange = inputsForm[1];
   const contributionRange = inputsForm[3];
-  const termRange = inputsForm[5];
+  // const termRange = inputsForm[5];
   const formSum = inputsForm[6];
   const formPayment = inputsForm[7];
 

@@ -1,40 +1,25 @@
 export function mask(selector) {
+  let matrix = "___ ___ ___ ___";
+
   function getMatrix(elem) {
-    let matrix = "";
     const arr = elem.value.split(".");
-
     const num = arr[0].replace(/\D/g, "");
-    const b = arr[1] ? arr[1] : 0;
+    let counter = 0;
 
-    for (let i = 0; i < num.length; i++) {
-      if (num.length === 1) {
-        matrix = "_";
-      } else if (num.length === 2) {
-        matrix = "__";
-      } else if (num.length === 3) {
-        matrix = "___";
-      } else if (num.length === 4) {
-        matrix = "_ ___";
-      } else if (num.length === 5) {
-        matrix = "__ ___";
-      } else if (num.length === 6) {
-        matrix = "___ ___";
-      } else if (num.length === 7) {
-        matrix = "_ ___ ___";
-      } else if (num.length === 8) {
-        matrix = "__ ___ ___";
-      } else if (num.length >= 9) {
-        matrix = "___ ___ ___";
+    for (let i = 1; i <= num.length; i++) {
+      counter++;
+      if ((i + 1) % 4 === 0) {
+        counter++;
       }
     }
 
-    return matrix;
+    return matrix.slice(-counter).trim();
   }
 
   function createMask(elem) {
-    let matrix = getMatrix(elem),
-      i = 0,
-      val = elem.value.replace(/\D/g, "");
+    let i = 0;
+    let val = elem.value.replace(/\D/g, "");
+    matrix = getMatrix(elem);
 
     elem.value = matrix.replace(/./g, function (a) {
       return /[_\d]/.test(a) && i < val.length ? val.charAt(i++) : i >= val.length ? "" : a;
